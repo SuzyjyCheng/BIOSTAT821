@@ -20,34 +20,45 @@ get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
 
 
 
-dat = get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
-
-
 import math
-newlist = []
-for i in range(len(dat)):
-    newlist = newlist + dat[i]
+def analyze_data(dat, option):
+    newlist = []
+    for i in range(len(dat)):
+        newlist = newlist + dat[i]
  
     
-avg = round(sum(newlist)/len(newlist),1)
-var = sum([((x - avg) ** 2) for x in newlist])/len(newlist)
-sd = round(var ** 0.5, 1)
+    avg = round(sum(newlist)/len(newlist),1)
+    var = sum([((x - avg) ** 2) for x in newlist])/len(newlist)
+    sd = round(var ** 0.5, 1)
 
-covariance_temp_sum = 0
-mean_d0 = math.fsum(dat[0]) / len(dat[0])
-mean_d1 = math.fsum(dat[1]) / len(dat[1])
-for x in range(len(dat[0])):
-    covariance_temp_sum = covariance_temp_sum + (dat[0][x] - mean_d0) * (dat[1][x] - mean_d1)
-cov = round((covariance_temp_sum / len(dat[0])),2)
+    covariance_temp_sum = 0
+    mean_d0 = math.fsum(dat[0]) / len(dat[0])
+    mean_d1 = math.fsum(dat[1]) / len(dat[1])
+    for x in range(len(dat[0])):
+        covariance_temp_sum = covariance_temp_sum + (dat[0][x] - mean_d0) * (dat[1][x] - mean_d1)
+    cov = round((covariance_temp_sum / len(dat[0])),2)
 
-sd0 = (sum([((x - mean_d0) ** 2) for x in dat[0]])/len(dat[0]))**0.5
-sd1 = (sum([((x - mean_d1) ** 2) for x in dat[1]])/len(dat[1]))**0.5
-corr = round(cov/(sd0 * sd1), 3)
+    sd0 = (sum([((x - mean_d0) ** 2) for x in dat[0]])/len(dat[0]))**0.5
+    sd1 = (sum([((x - mean_d1) ** 2) for x in dat[1]])/len(dat[1]))**0.5
+    corr = round(cov/(sd0 * sd1), 3)
 
+    if option == "average":
+        return avg
+    elif option == "standard deviation":
+        return sd
+    elif option == "covariance":
+        return cov
+    elif option == "correlation":
+        return corr
+   
+dat = get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
+Average = analyze_data(dat, "average")
+Standard_deviation = analyze_data(dat, "standard deviation") 
+Covariance = analyze_data(dat, "covariance")
+Correlation = analyze_data(dat, "correlation")
 
-print(avg)
-print(sd)
-print(cov)
-print(corr)
-    
+print(Average)
+print(Standard_deviation)
+print(Covariance)
+print(Correlation)
  
