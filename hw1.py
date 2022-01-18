@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 def get_data(file):
     r_file = open(file, "r")
@@ -16,36 +14,13 @@ def get_data(file):
     return list_of_lists
 
 
-# In[2]:
 
 
 get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
 
 
-# In[3]:
-
 
 dat = get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
-
-
-# In[43]:
-
-
-import math
-dsum = sum(sum(i) for i in dat)
-count = 0
-var = 0
-for i in range(len(dat)):
-    count = count + len(dat[i])
-    avg = round(dsum/count, 1)
-    var = var + sum([((x - avg) ** 2) for x in dat[i]])
-    variance = round((var/count) ** 0.5, 1)
-
-print(avg)
-print(variance)
-
-
-# In[62]:
 
 
 import math
