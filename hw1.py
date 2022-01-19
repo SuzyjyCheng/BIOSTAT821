@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+# get data function
 def get_data(file):
     r_file = open(file, "r")
     list_of_lists = []
@@ -15,11 +15,11 @@ def get_data(file):
 
 
 
-
+#output
 get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
 
 
-
+#function to analyze average, standard deviation, covariance and correlation
 import math
 def analyze_data(dat, option):
     newlist = []
@@ -57,6 +57,7 @@ Standard_deviation = analyze_data(dat, "standard deviation")
 Covariance = analyze_data(dat, "covariance")
 Correlation = analyze_data(dat, "correlation")
 
+#output
 print(Average)
 print(Standard_deviation)
 print(Covariance)
