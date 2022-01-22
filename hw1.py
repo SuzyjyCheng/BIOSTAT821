@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # get data function
-def get_data(file):
+def get_data(file: str) -> list:
     r_file = open(file, "r")
     list_of_lists = []
     for line in r_file:
@@ -21,7 +21,7 @@ get_data("/Users/Suzy/Desktop/BIOSTAT 821/example.txt")
 
 #function to analyze average, standard deviation, covariance and correlation
 import math
-def analyze_data(dat, option):
+def analyze_data(dat: list, option: str) -> float:
     newlist = []
     for i in range(len(dat)):
         newlist = newlist + dat[i]
